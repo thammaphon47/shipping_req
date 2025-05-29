@@ -1,0 +1,134 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="Site.master.vb" Inherits="SHIPPING_REQ.Site" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <meta charset="UTF-8" />
+    <title>SHIPPING SYSTEM</title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .page {
+            width: 1000px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #007acc;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .title h1 {
+            font-size: 24px;
+            color: #FFC1DA;
+            margin: 0;
+        }
+
+        .loginDisplay {
+            font-size: 14px;
+        }
+
+.menu {
+    margin-bottom: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end; /* ✅ ชิดขวา */
+}
+.menu-bar {
+    background-color: #FFF7D1;
+    font-size: 13px;
+    padding: 5px 10px; /* 🔽 ลด padding เพื่อให้พื้นหลังเตี้ยลง */
+    border-radius: 12px; /* ขอบมน */
+}
+
+.menu-bar ul.StaticMenu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end; /* ✅ เมนูอยู่ฝั่งขวา */
+    gap: 8px;
+    box-sizing: border-box;
+    width: auto;
+}
+
+.menu-bar .StaticMenuItem {
+    margin: 0;
+}
+
+.menu-bar .StaticMenuItem a {
+    display: inline-block;
+    padding: 4px 8px; /* 🔧 ปรับขนาดปุ่มให้พอดีกับพื้นหลัง */
+    background-color: #007acc;
+    color: black;
+    border-radius: 20px; /* ✅ ปุ่มโค้งมน */
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    font-size: 14px; /* ✅ ขนาดตัวอักษรใหญ่ขึ้น */
+    font-weight: bold; /* ✅ ตัวหนา */
+    cursor: pointer;
+}
+
+.menu-bar .StaticMenuItem a:hover {
+    background-color: #005fa3;
+   color: yellow; /* สีตัวอักษรตอน hover */
+}
+
+        .main {
+            min-height: 400px;
+        }
+
+        .footer {
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+            text-align: center;
+            font-size: 13px;
+            color: #999;
+        }
+    </style>
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="Form1" runat="server">
+        <div class="page">
+
+
+            <div class="menu">
+                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu-bar" EnableViewState="false"
+                    IncludeStyleBlock="false" Orientation="Horizontal" StaticDisplayLevels="2">
+                    <Items>
+                        <asp:MenuItem NavigateUrl="~/Home.aspx" Text="🏠 HOME" />
+                        <asp:MenuItem  NavigateUrl="~/ShipReq.aspx" Text="📦 SHIPPING">
+                            <asp:MenuItem NavigateUrl="~/Invoce.aspx" Text="📄 Invoice Export" />
+                        </asp:MenuItem>
+                    </Items>
+                </asp:Menu>
+            </div>
+
+            <div class="main">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+            </div>
+
+            <div class="footer">
+                &copy; 2025 Thai Kokoku Rubber Co., Ltd. All rights reserved.
+            </div>
+        </div>
+    </form>
+</body>
+</html>

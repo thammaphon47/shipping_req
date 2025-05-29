@@ -1,0 +1,10 @@
+C:\Users\Thammaphon\Desktop\SHIPPING_REQ\SHIPPING_REQ\SHIPPING_REQ\bin\SHIPPING_REQ.dll
+C:\Users\Thammaphon\Desktop\SHIPPING_REQ\SHIPPING_REQ\SHIPPING_REQ\bin\SHIPPING_REQ.pdb
+C:\Users\Thammaphon\Desktop\SHIPPING_REQ\SHIPPING_REQ\SHIPPING_REQ\bin\SHIPPING_REQ.xml
+C:\Users\Thammaphon\Desktop\SHIPPING_REQ\SHIPPING_REQ\SHIPPING_REQ\obj\Debug\SHIPPING_REQ.Resources.resources
+C:\Users\Thammaphon\Desktop\SHIPPING_REQ\SHIPPING_REQ\SHIPPING_REQ\obj\Debug\SHIPPING_REQ.vbproj.GenerateResource.Cache
+C:\Users\Thammaphon\Desktop\SHIPPING_REQ\SHIPPING_REQ\SHIPPING_REQ\obj\Debug\SHIPPING_REQ.dll
+C:\Users\Thammaphon\Desktop\SHIPPING_REQ\SHIPPING_REQ\SHIPPING_REQ\obj\Debug\SHIPPING_REQ.xml
+C:\Users\Thammaphon\Desktop\SHIPPING_REQ\SHIPPING_REQ\SHIPPING_REQ\obj\Debug\SHIPPING_REQ.pdb
+C:\Users\Thammaphon\Desktop\SHIPPING_REQ\SHIPPING_REQ\SHIPPING_REQ\bin\Oracle.DataAccess.dll
+C:\Users\Thammaphon\Desktop\SHIPPING_REQ\SHIPPING_REQ\SHIPPING_REQ\obj\Debug\SHIPPING_REQ.vbprojResolveAssemblyReference.cache
