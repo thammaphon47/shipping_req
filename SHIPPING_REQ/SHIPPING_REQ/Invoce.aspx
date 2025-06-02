@@ -78,6 +78,141 @@
             color: #721c24;
             border: 1px solid #f5c6cb;
         }
+    .modern-gridview {
+        border-collapse: separate;
+        border-spacing: 0;
+        width: 100%;
+        font-family: Arial, sans-serif;
+        border: 1px solid #ddd;
+        background-color: #fff;
+    }
+
+    .modern-gridview th {
+        background-color: #f4f4f4;
+        color: #333;
+        font-weight: bold;
+        padding: 8px;
+        border-bottom: 2px solid #ddd;
+        text-align: left;
+    }
+
+    .modern-gridview td {
+        padding: 8px;
+        border-bottom: 1px solid #eee;
+    }
+
+    .modern-gridview tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .modern-gridview tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    .grid-input {
+        width: 95%;
+        padding: 4px 6px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .modern-gridview .aspNetDisabled {
+        background-color: #e0e0e0;
+    }    /* ตาราง */
+.modern-gridview {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    color: #000; /* ตัวหนังสือสีดำ */
+}
+
+.modern-gridview th {
+    background-color: #f4f4f4;
+    color: #000; /* ตัวหนังสือสีดำ */
+    font-weight: bold;
+    padding: 8px;
+    border-bottom: 2px solid #ddd;
+    text-align: left;
+}
+
+.modern-gridview td {
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+    vertical-align: middle;
+    color: #000; /* ตัวหนังสือสีดำ */
+}
+
+.modern-gridview tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.modern-gridview tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* textbox ใน edit mode */
+.grid-input {
+    width: 95%;
+    padding: 4px 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 13px;
+    font-family: Arial, sans-serif;
+    color: #000; /* ตัวหนังสือสีดำ */
+}
+
+/* ปุ่มพื้นฐาน */
+.btn {
+    display: inline-block;
+    padding: 5px 14px;
+    margin: 2px 5px 2px 0;
+    font-size: 13px;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1.5px solid transparent;
+    font-weight: 600;
+    transition: background-color 0.25s ease, border-color 0.25s ease;
+    user-select: none;
+    color: #000; /* ตัวหนังสือสีดำ */
+}
+
+/* ปุ่ม Edit สีฟ้าอ่อน */
+.btn-edit {
+    background-color: #a9c8ff; /* ฟ้าอ่อน */
+    color: #000;
+    border-color: #a9c8ff;
+}
+.btn-edit:hover {
+    background-color: #88b2ff;
+    border-color: #88b2ff;
+}
+
+/* ปุ่ม Update สีเขียวอ่อน */
+.btn-update {
+    background-color: #a8d5a2; /* เขียวอ่อน */
+    color: #000;
+    border-color: #a8d5a2;
+}
+.btn-update:hover {
+    background-color: #8bc17a;
+    border-color: #8bc17a;
+}
+
+/* ปุ่ม Cancel สีแดงอ่อน */
+.btn-cancel {
+    background-color: #f5a9a9; /* แดงอ่อน */
+    color: #000;
+    border-color: #f5a9a9;
+}
+.btn-cancel:hover {
+    background-color: #e67a7a;
+    border-color: #e67a7a;
+}
+    
     </style>
 </asp:Content>
 
@@ -223,79 +358,93 @@
     OnRowUpdating="gvShippingItems_RowUpdating"
     OnRowCancelingEdit="gvShippingItems_RowCancelingEdit"
     DataKeyNames="ID"
-    AutoGenerateEditButton="True">
-    
+    CssClass="modern-gridview"
+    Style="width: 100%;">
+
     <Columns>
-        <asp:TemplateField HeaderText="No" ItemStyle-Width="40px" ItemStyle-HorizontalAlign="Center">
+        <asp:TemplateField HeaderText="No" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="50px">
             <ItemTemplate>
                 <%# Container.DataItemIndex + 1 %>
             </ItemTemplate>
         </asp:TemplateField>
 
-<asp:TemplateField HeaderText="MARK&NUMBER">
-    <ItemTemplate>
-        &nbsp;  
-    </ItemTemplate>
-    <EditItemTemplate>
-        <asp:TextBox ID="txtMarkNo" runat="server" Text=''></asp:TextBox>
-    </EditItemTemplate>
-</asp:TemplateField>
+        <asp:TemplateField HeaderText="MARK&NUMBER" ItemStyle-Width="150px">
+            <ItemTemplate>
+                <%# Eval("MARK_NO") %>
+            </ItemTemplate>
+            <EditItemTemplate>
+                <asp:TextBox ID="txtMarkNo" runat="server" CssClass="grid-input" Text='<%# Bind("MARK_NO") %>' />
+            </EditItemTemplate>
+        </asp:TemplateField>
 
-        <asp:TemplateField HeaderText="DESCRIPTION">
+        <asp:TemplateField HeaderText="DESCRIPTION" ItemStyle-Width="200px">
             <ItemTemplate>
                 <%# Eval("DESCRIPTION") %>
             </ItemTemplate>
             <EditItemTemplate>
-                <asp:TextBox ID="txtDesc" runat="server" Text='<%# Bind("DESCRIPTION") %>'></asp:TextBox>
+                <asp:TextBox ID="txtDesc" runat="server" CssClass="grid-input" Text='<%# Bind("DESCRIPTION") %>' />
             </EditItemTemplate>
         </asp:TemplateField>
 
-        <asp:TemplateField HeaderText="Qty">
+        <asp:TemplateField HeaderText="Qty" ItemStyle-Width="80px">
             <ItemTemplate>
                 <%# Eval("QTY") %>
             </ItemTemplate>
             <EditItemTemplate>
-                <asp:TextBox ID="txtQty" runat="server" Text='<%# Bind("QTY") %>'></asp:TextBox>
+                <asp:TextBox ID="txtQty" runat="server" CssClass="grid-input" Text='<%# Bind("QTY") %>' />
             </EditItemTemplate>
         </asp:TemplateField>
 
-        <asp:TemplateField HeaderText="Unit">
+        <asp:TemplateField HeaderText="Unit" ItemStyle-Width="80px">
             <ItemTemplate>
                 <%# Eval("UNIT") %>
             </ItemTemplate>
             <EditItemTemplate>
-                <asp:TextBox ID="txtUnit" runat="server" Text='<%# Bind("UNIT") %>'></asp:TextBox>
+                <asp:TextBox ID="txtUnit" runat="server" CssClass="grid-input" Text='<%# Bind("UNIT") %>' />
             </EditItemTemplate>
         </asp:TemplateField>
 
-        <asp:TemplateField HeaderText="Currency">
+        <asp:TemplateField HeaderText="Currency" ItemStyle-Width="90px">
             <ItemTemplate>
                 <%# Eval("CURRENCY") %>
             </ItemTemplate>
             <EditItemTemplate>
-                <asp:TextBox ID="txtCurrency" runat="server" Text='<%# Bind("CURRENCY") %>'></asp:TextBox>
+                <asp:TextBox ID="txtCurrency" runat="server" CssClass="grid-input" Text='<%# Bind("CURRENCY") %>' />
             </EditItemTemplate>
         </asp:TemplateField>
 
-        <asp:TemplateField HeaderText="Unit Price">
+        <asp:TemplateField HeaderText="Unit Price" ItemStyle-Width="110px">
             <ItemTemplate>
                 <%# Eval("UNIT_PRICE", "{0:N2}") %>
             </ItemTemplate>
             <EditItemTemplate>
-                <asp:TextBox ID="txtUnitPrice" runat="server" Text='<%# Bind("UNIT_PRICE") %>'></asp:TextBox>
+                <asp:TextBox ID="txtUnitPrice" runat="server" CssClass="grid-input" Text='<%# Bind("UNIT_PRICE") %>' />
             </EditItemTemplate>
         </asp:TemplateField>
 
-        <asp:TemplateField HeaderText="Amount">
+        <asp:TemplateField HeaderText="Amount" ItemStyle-Width="110px">
             <ItemTemplate>
                 <%# Eval("AMOUNT", "{0:N2}") %>
             </ItemTemplate>
             <EditItemTemplate>
-                <asp:TextBox ID="txtAmount" runat="server" Text='<%# Bind("AMOUNT") %>'></asp:TextBox>
+                <asp:TextBox ID="txtAmount" runat="server" CssClass="grid-input" Text='<%# Bind("AMOUNT") %>' />
+            </EditItemTemplate>
+        </asp:TemplateField>
+
+        <asp:TemplateField HeaderText="Actions" ItemStyle-Width="150px" ItemStyle-HorizontalAlign="Center">
+            <ItemTemplate>
+                <asp:LinkButton ID="btnEdit" runat="server" CommandName="Edit" CssClass="btn btn-edit" Text="Edit" />
+            </ItemTemplate>
+            <EditItemTemplate>
+                <asp:LinkButton ID="btnUpdate" runat="server" CommandName="Update" CssClass="btn btn-update" Text="Update" />
+                <asp:LinkButton ID="btnCancel" runat="server" CommandName="Cancel" CssClass="btn btn-cancel" Text="Cancel" />
             </EditItemTemplate>
         </asp:TemplateField>
     </Columns>
 </asp:GridView>
+
+
+
 
 <asp:Label ID="Label1" runat="server" CssClass="text-danger" Visible="false"></asp:Label>
 

@@ -115,7 +115,7 @@ Public Class _Default
     End Sub
 
     ' ฟังก์ชันที่ถูกเรียกเมื่อคลิกปุ่ม Search
-    Protected Sub btnEdit_Click(sender As Object, e As EventArgs)
+    Protected Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
         Dim SP_NO As String = txtSearch.Text.Trim()
         Dim dt As New DataTable()
 
@@ -225,7 +225,7 @@ Public Class _Default
     End Function
 
     ' btnSave_Click
-        Protected Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+    Protected Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         If sqlConn.State = ConnectionState.Closed Then
             sqlConn.Open()
         End If
@@ -263,7 +263,7 @@ Public Class _Default
 
             ' Insert หรือ Update Header
             If String.IsNullOrEmpty(shippingNo) Then
-                shippingNo = GenerateShippingNo()
+                shippingNo = GenerateShippingNo(sqlConn, transaction)
                 txtShippingNo.Text = shippingNo
 
                 Dim insertHeader As String = "INSERT INTO [CS_DATA].[dbo].[SPPING_H] " &
@@ -395,16 +395,12 @@ Public Class _Default
         Response.End()
     End Sub
 
-
-
-    Private Function GenerateShippingNo() As String
-        If sqlConn.State = ConnectionState.Closed Then sqlConn.Open()
-
+   Private Function GenerateShippingNo(conn As SqlConnection, trans As SqlTransaction) As String
         Dim currentDate As String = DateTime.Now.ToString("yyyyMMdd")
         Dim prefix As String = "SP" & currentDate
         Dim query As String = "SELECT TOP 1 SPP_NO FROM [CS_DATA].[dbo].[SPPING_H] WHERE SPP_NO LIKE @Prefix ORDER BY SPP_NO DESC"
 
-        Using cmd As New SqlCommand(query, sqlConn)
+        Using cmd As New SqlCommand(query, conn, trans)
             cmd.Parameters.AddWithValue("@Prefix", prefix & "%")
             Dim lastShippingNo As Object = cmd.ExecuteScalar()
 
@@ -583,4 +579,5 @@ Public Class _Default
         lblMessage.Text = ""
         lblMessage.Visible = False
     End Sub
+
 End Class
